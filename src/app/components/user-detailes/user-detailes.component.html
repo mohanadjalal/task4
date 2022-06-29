@@ -1,0 +1,15 @@
+<div class="bg-light">
+  <h1 class="">User Profile</h1>
+  <nav class="navbar navbar-light w-25 rounded-1">
+    <div class="container-fluid justify-content-start">
+      <a class="btn btn-outline-info m-2" routerLink="details/{{ userId }}"
+        >details</a
+      >
+      <a class="btn btn-outline-warning m-2" routerLink="posts/{{ userId }}"
+        >Posts</a
+      >
+    </div>
+  </nav>
+
+  <router-outlet></router-outlet>
+</div>

@@ -1,0 +1,41 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import {
+  PostPreview,
+  Post,
+  CreatePost,
+  UpdatePost,
+} from '../models/post.model';
+import { List } from '../models/user.model';
+@Injectable({
+  providedIn: 'root',
+})
+export class PostService {
+  baseUrl = 'https://dummyapi.io/data/v1/';
+
+  options = {
+    headers: new HttpHeaders().set('app-id', '62b9514ce20e2d5c6edfc3d8'),
+  };
+  constructor(private http: HttpClient) {}
+
+  createPost(body: CreatePost): Observable<Post> {
+    const url = this.baseUrl + '/post/create';
+    return this.http.post<Post>(url, body);
+  }
+
+  getListByUser(id: any): Observable<List<PostPreview>> {
+    const url = this.baseUrl + `/user/${id}/post`;
+    return this.http.get<List<PostPreview>>(url);
+  }
+
+  updatePost(id: any, body: UpdatePost): Observable<Post> {
+    const url = this.baseUrl + `/post/${id}`;
+    return this.http.put<Post>(url, body);
+  }
+
+  deletePost(id: any): Observable<string> {
+    const url = this.baseUrl + `/post/${id}`;
+    return this.http.delete<string>(url);
+  }
+}
