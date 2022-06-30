@@ -12,7 +12,7 @@ import { List } from '../models/user.model';
   providedIn: 'root',
 })
 export class PostService {
-  baseUrl = 'https://dummyapi.io/data/v1/';
+  baseUrl = 'https://dummyapi.io/data/v1';
 
   options = {
     headers: new HttpHeaders().set('app-id', '62b9514ce20e2d5c6edfc3d8'),
@@ -21,21 +21,21 @@ export class PostService {
 
   createPost(body: CreatePost): Observable<Post> {
     const url = this.baseUrl + '/post/create';
-    return this.http.post<Post>(url, body);
+    return this.http.post<Post>(url, body, this.options);
   }
 
   getListByUser(id: any): Observable<List<PostPreview>> {
     const url = this.baseUrl + `/user/${id}/post`;
-    return this.http.get<List<PostPreview>>(url);
+    return this.http.get<List<PostPreview>>(url, this.options);
   }
 
   updatePost(id: any, body: UpdatePost): Observable<Post> {
     const url = this.baseUrl + `/post/${id}`;
-    return this.http.put<Post>(url, body);
+    return this.http.put<Post>(url, body, this.options);
   }
 
   deletePost(id: any): Observable<string> {
     const url = this.baseUrl + `/post/${id}`;
-    return this.http.delete<string>(url);
+    return this.http.delete<string>(url, this.options);
   }
 }

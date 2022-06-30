@@ -7,7 +7,7 @@ import {
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
-import { List, userPreview } from '../models/user.model';
+import { List, userFull, userPreview } from '../models/user.model';
 
 @Injectable({
   providedIn: 'root',
@@ -27,7 +27,6 @@ export class UserService {
     const url = this.baseUrl + 'user';
     return this.http.get<List<userPreview>>(url, {
       ...this.options,
-      params: { created: 1 },
     });
   }
 
@@ -51,10 +50,10 @@ export class UserService {
 
     return this.http.delete<string>(url, this.options);
   }
-  getUserById(id: string): Observable<userPreview> {
+  getUserById(id: string): Observable<userFull> {
     const url = this.baseUrl + 'user/' + id;
     return this.http
-      .get<userPreview>(url, {
+      .get<userFull>(url, {
         ...this.options,
       })
       .pipe(catchError(this.handleError));

@@ -18,13 +18,9 @@ export interface PostPreview {
 }
 
 export interface UpdatePost {
-  id: string;
   text: string;
   image: string;
   likes: number;
-  link: string;
-  tags: Array<string>;
-  publishDate: string;
 }
 
 // Post data returned by id.

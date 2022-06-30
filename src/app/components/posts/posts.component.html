@@ -1,1 +1,23 @@
-<p>posts works!</p>
+<button class="btn btn-primary" (click)="createPost()">Create Post</button>
+<div *ngFor="let p of postList">
+  <br />
+  <hr />
+  <img src="{{ p?.image }}" style="width: 35%" alt="img" />
+
+  <h4>id: {{ p?.id }}</h4>
+  <h4>text: {{ p?.text }}</h4>
+  <h4>likes: {{ p?.likes }}</h4>
+  <h4>link: {{ p?.link }}</h4>
+  <h4>tags: {{ p?.tags }}</h4>
+  <h4>publishDate: {{ p?.publishDate }}</h4>
+  <div class="row w-25">
+    <button class="btn btn-danger col m-2" (click)="deletePost(p.id)">
+      Del
+    </button>
+    <button class="btn btn-success col m-2" (click)="EditPost(p.id)">
+      Edit
+    </button>
+  </div>
+
+  <br />
+</div>

@@ -47,16 +47,6 @@ export class UserListComponent implements OnInit {
     this.userSer.deleteUser(id).subscribe((res) => this.getUsers());
   }
 
-  getUserById(id: number): void {
-    const strId = id.toString();
-    this.userSer.getUserById(strId).subscribe((res) => {
-      console.log(res);
-      alert(
-        `id : ${res.id} \nFirst Name : ${res.firstName} \nLast Name : ${res.lastName}`
-      );
-    });
-  }
-
   moveToDetails(id: number): void {
     this.router.navigate(['user-details', id]);
   }

@@ -6,7 +6,11 @@ export interface userPreview {
   picture: string;
 }
 
-export interface userFull extends userPreview {
+export interface userFull {
+  id: number;
+  title: 'mr' | 'ms' | 'mrs' | 'miss' | 'dr' | '';
+  firstName: string;
+  lastName: string;
   gender: 'male' | 'female' | 'other';
   email: string;
   dateOfBirth: string;
