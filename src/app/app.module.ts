@@ -10,6 +10,7 @@ import { AboutComponent } from './components/about/about.component';
 import { HttpClientModule } from '@angular/common/http';
 import { PostsComponent } from './components/posts/posts.component';
 import { DetailsComponent } from './components/details/details.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { DetailsComponent } from './components/details/details.component';
     UserDetailesComponent,
     AboutComponent,
     PostsComponent,
-    DetailsComponent
+    DetailsComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,

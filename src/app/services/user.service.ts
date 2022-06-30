@@ -17,9 +17,7 @@ export class UserService {
   baseUrl = 'https://dummyapi.io/data/v1/';
 
   options = {
-    headers: new HttpHeaders()
-      .set('content-type', 'application/json')
-      .set('app-id', '62b9514ce20e2d5c6edfc3d8'),
+    headers: new HttpHeaders().set('app-id', '62b9514ce20e2d5c6edfc3d8'),
   };
 
   constructor(private http: HttpClient) {}
