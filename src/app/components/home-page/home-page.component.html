@@ -1,1 +1,53 @@
-<p>home-page works!</p>
+<form #heroForm="ngForm" class="m-2">
+  <div class="m-2">
+    <label for="name">Name</label>
+    <input
+      type="text"
+      class="form-control"
+      id="name"
+      required
+      [(ngModel)]="hero.name"
+      name="name"
+      #name="ngModel"
+    />
+    <div *ngIf="!name.valid && name.touched" class="alert alert-danger">
+      this field is required
+    </div>
+  </div>
+
+  <div class="m-2">
+    <label for="alterEgo">Alter Ego</label>
+    <input
+      type="text"
+      class="form-control"
+      id="alterEgo"
+      [(ngModel)]="hero.alterEgo"
+      name="alterEgo"
+    />
+  </div>
+
+  <div class="m-2">
+    <label for="power">Hero Power</label>
+    <select
+      class="form-control"
+      id="power"
+      required
+      [(ngModel)]="hero.power"
+      name="power"
+      #power="ngModel"
+    >
+      <option *ngFor="let p of powers" [value]="p">{{ p }}</option>
+    </select>
+    <div *ngIf="!power.valid && power.touched" class="alert alert-danger">
+      this field is required
+    </div>
+  </div>
+  <button class="btn btn-primary m-2 p-2" (click)="onSubmit()">Submit</button>
+  <button
+    class="btn btn-warning m-2 p-2"
+    (click)="heroForm.reset()"
+    type="reset"
+  >
+    Reset
+  </button>
+</form>
