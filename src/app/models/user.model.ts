@@ -26,3 +26,17 @@ export interface List<type> {
   page: number;
   limit: number;
 }
+
+export interface UserCreate {
+  firstName: string;
+  lastName: string;
+  email: string;
+}
+
+export interface UpdateUser {
+  title?: 'mr' | 'ms' | 'mrs' | 'miss' | 'dr' | '';
+  firstName?: string;
+  lastName?: string;
+  gender?: 'male' | 'female' | 'other';
+  picture?: string;
+}

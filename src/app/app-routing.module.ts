@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AboutComponent } from './components/about/about.component';
 import { DetailsComponent } from './components/details/details.component';
@@ -6,11 +6,15 @@ import { HomePageComponent } from './components/home-page/home-page.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { PostsComponent } from './components/posts/posts.component';
 import { UserDetailesComponent } from './components/user-detailes/user-detailes.component';
+import { UserFormComponent } from './components/user-form/user-form.component';
 import { UserListComponent } from './components/user-list/user-list.component';
 
 const routes: Routes = [
   { path: 'home', component: HomePageComponent },
   { path: 'about', component: AboutComponent },
+  { path: 'user-form/:id', component: UserFormComponent },
+  { path: 'user-form', component: UserFormComponent },
+
   { path: 'users', component: UserListComponent },
   {
     path: 'user-details/:id',

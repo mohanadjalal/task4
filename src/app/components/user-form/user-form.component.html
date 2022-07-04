@@ -1,0 +1,138 @@
+<form #userForm="ngForm" class="w-75 m-auto">
+  <!-- update -->
+  <div *ngIf="id">
+    <h3>update form</h3>
+    <div class="mb-3">
+      <label for="name">First Name</label>
+      <input
+        type="text"
+        class="form-control"
+        id="name"
+        [(ngModel)]="updateModel.firstName"
+        name="name"
+        #name="ngModel"
+      />
+    </div>
+
+    <div class="mb-3">
+      <label for="lname">Last Name</label>
+      <input
+        type="text"
+        class="form-control"
+        id="lname"
+        [(ngModel)]="updateModel.lastName"
+        name="lname"
+        #lname="ngModel"
+      />
+    </div>
+
+    <div class="mb-3">
+      <label for="title">Title</label>
+      <select
+        class="form-control"
+        id="title"
+        name="title"
+        [(ngModel)]="updateModel.title"
+        #title
+      >
+        <option *ngFor="let t of titles" [value]="t">{{ t }}</option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label for="gender">Gender</label>
+      <select
+        class="form-control"
+        id="gender"
+        name="gender"
+        [(ngModel)]="updateModel.gender"
+        #gender
+      >
+        <option *ngFor="let g of genders" [value]="g">{{ g }}</option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label for="pic">Picture</label>
+      <input
+        type="text"
+        class="form-control"
+        id="pic"
+        [(ngModel)]="updateModel.picture"
+        name="pic"
+        #pic="ngModel"
+      />
+    </div>
+  </div>
+
+  <!-- create -->
+  <div *ngIf="!id">
+    <h3>create form</h3>
+    <div class="mb-3">
+      <label for="name">First Name</label>
+      <input
+        type="text"
+        class="form-control"
+        id="name"
+        required
+        [(ngModel)]="createModel.firstName"
+        name="name"
+        #name="ngModel"
+      />
+      <div *ngIf="!name.valid && name.touched" class="alert alert-danger">
+        this field is required
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="lname">Last Name</label>
+      <input
+        type="text"
+        class="form-control"
+        id="lname"
+        required
+        [(ngModel)]="createModel.lastName"
+        name="lname"
+        #lname="ngModel"
+      />
+      <div *ngIf="!lname.valid && lname.touched" class="alert alert-danger">
+        this field is required
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="email">E-Mail</label>
+      <input
+        type="text"
+        class="form-control"
+        id="email"
+        required
+        [(ngModel)]="createModel.email"
+        name="email"
+        #email="ngModel"
+      />
+      <div *ngIf="!email.valid && email.touched" class="alert alert-danger">
+        this field is required
+      </div>
+    </div>
+  </div>
+  <button
+    class="btn btn-primary me-3 p-2"
+    type="submit"
+    (click)="onSubmit()"
+    [disabled]="!userForm.valid || userForm.pristine"
+  >
+    Submit
+  </button>
+  <button
+    class="btn btn-warning m-2 p-2"
+    type="reset"
+    (click)="backToUserList()"
+  >
+    Back
+  </button>
+  <div *ngIf="errors.length" class="alert alert-danger">
+    <h5 *ngFor="let err of errors" class="m-2">{{ err }}</h5>
+  </div>
+  <div *ngIf="success" class="alert alert-success">{{ success }}</div>
+</form>

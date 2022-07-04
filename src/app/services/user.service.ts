@@ -7,7 +7,13 @@ import {
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
-import { List, userFull, userPreview } from '../models/user.model';
+import {
+  List,
+  UpdateUser,
+  UserCreate,
+  userFull,
+  userPreview,
+} from '../models/user.model';
 
 @Injectable({
   providedIn: 'root',
@@ -27,19 +33,17 @@ export class UserService {
     const url = this.baseUrl + 'user';
     return this.http.get<List<userPreview>>(url, {
       ...this.options,
+      params: { created: 1 },
     });
   }
 
-  createUser(body: any): Observable<userPreview> {
+  createUser(body: UserCreate): Observable<userPreview> {
     const url = this.baseUrl + 'user/create';
 
     return this.http.post<userPreview>(url, body, this.options);
   }
 
-  updateUser(
-    id: any,
-    body: { firstName: string; lastName: string }
-  ): Observable<userPreview> {
+  updateUser(id: any, body: UpdateUser): Observable<userPreview> {
     const url = this.baseUrl + `user/${id}`;
 
     return this.http.put<userPreview>(url, body, this.options);

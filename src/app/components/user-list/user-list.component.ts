@@ -21,26 +21,11 @@ export class UserListComponent implements OnInit {
   }
 
   createUser() {
-    const body = {
-      firstName: 'mohanad',
-      lastName: 'jayousi ',
-      email: `${Math.random().toString(36).slice(2)}@gmail.com`,
-    };
-
-    this.userSer.createUser(body).subscribe(
-      (res) => {
-        this.getUsers();
-      },
-      (err) => console.log(err)
-    );
+    this.router.navigate(['user-form']);
   }
 
   updateUser(id: any) {
-    const body = {
-      firstName: 'updated mohanad',
-      lastName: 'updated jayousi ',
-    };
-    this.userSer.updateUser(id, body).subscribe((res) => this.getUsers());
+    this.router.navigate(['user-form', id]);
   }
 
   deleteUser(id: any) {
