@@ -30,7 +30,10 @@ export interface List<type> {
 export interface UserCreate {
   firstName: string;
   lastName: string;
-  email: string;
+  email?: string;
+  gender?: 'male' | 'female' | 'other';
+  picture?: string;
+  title?: 'mr' | 'ms' | 'mrs' | 'miss' | 'dr' | '';
 }
 
 export interface UpdateUser {
@@ -39,4 +42,13 @@ export interface UpdateUser {
   lastName?: string;
   gender?: 'male' | 'female' | 'other';
   picture?: string;
+}
+
+export interface UserFormModel {
+  firstName: string;
+  lastName: string;
+  email?: string;
+  gender?: 'male' | 'female' | 'other';
+  picture?: string;
+  title?: 'mr' | 'ms' | 'mrs' | 'miss' | 'dr' | '';
 }
