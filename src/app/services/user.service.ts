@@ -37,13 +37,13 @@ export class UserService {
     });
   }
 
-  createUser(body: UserCreate): Observable<userPreview> {
+  createUser(body: any): Observable<userPreview> {
     const url = this.baseUrl + 'user/create';
 
     return this.http.post<userPreview>(url, body, this.options);
   }
 
-  updateUser(id: any, body: UpdateUser): Observable<userPreview> {
+  updateUser(id: any, body: any): Observable<userPreview> {
     const url = this.baseUrl + `user/${id}`;
 
     return this.http.put<userPreview>(url, body, this.options);

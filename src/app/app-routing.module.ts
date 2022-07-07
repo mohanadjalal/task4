@@ -8,12 +8,13 @@ import { PostsComponent } from './components/posts/posts.component';
 import { UserDetailesComponent } from './components/user-detailes/user-detailes.component';
 import { UserFormComponent } from './components/user-form/user-form.component';
 import { UserListComponent } from './components/user-list/user-list.component';
+import { UserReactiveFormComponent } from './components/user-reactive-form/user-reactive-form.component';
 
 const routes: Routes = [
   { path: 'home', component: HomePageComponent },
   { path: 'about', component: AboutComponent },
-  { path: 'user-form/:id', component: UserFormComponent },
-  { path: 'user-form', component: UserFormComponent },
+  { path: 'user-form/:id', component: UserReactiveFormComponent },
+  { path: 'user-form', component: UserReactiveFormComponent },
 
   { path: 'users', component: UserListComponent },
   {
