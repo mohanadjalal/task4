@@ -32,10 +32,7 @@ export class UserReactiveFormComponent implements OnInit {
         Validators.required,
         Validators.minLength(2),
       ]),
-      email: new FormControl('', [
-        Validators.required,
-        Validators.pattern(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/),
-      ]),
+      email: new FormControl('', [Validators.required, Validators.email]),
       title: new FormControl(''),
       gender: new FormControl(''),
       picture: new FormControl(''),

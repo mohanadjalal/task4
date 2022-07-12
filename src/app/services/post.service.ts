@@ -19,7 +19,7 @@ export class PostService {
   };
   constructor(private http: HttpClient) {}
 
-  createPost(body: CreatePost): Observable<Post> {
+  createPost(body: any): Observable<Post> {
     const url = this.baseUrl + '/post/create';
     return this.http.post<Post>(url, body, this.options);
   }
@@ -29,13 +29,18 @@ export class PostService {
     return this.http.get<List<PostPreview>>(url, this.options);
   }
 
-  updatePost(id: any, body: UpdatePost): Observable<Post> {
+  updatePost(id: any, body: any): Observable<PostPreview> {
     const url = this.baseUrl + `/post/${id}`;
-    return this.http.put<Post>(url, body, this.options);
+    return this.http.put<PostPreview>(url, body, this.options);
   }
 
   deletePost(id: any): Observable<string> {
     const url = this.baseUrl + `/post/${id}`;
     return this.http.delete<string>(url, this.options);
+  }
+
+  getPost(id: any): Observable<PostPreview> {
+    const url = this.baseUrl + `/post/${id}`;
+    return this.http.get<PostPreview>(url, this.options);
   }
 }

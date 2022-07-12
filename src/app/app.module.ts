@@ -14,6 +14,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserFormComponent } from './components/user-form/user-form.component';
 import { UserReactiveFormComponent } from './components/user-reactive-form/user-reactive-form.component';
+import { PostFormComponent } from './components/post-form/post-form.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { UserReactiveFormComponent } from './components/user-reactive-form/user-
     NotFoundComponent,
     UserFormComponent,
     UserReactiveFormComponent,
+    PostFormComponent,
   ],
   imports: [
     BrowserModule,

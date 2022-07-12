@@ -6,7 +6,6 @@ export const duplicateNameValidator: ValidatorFn = (
 ): ValidationErrors | null => {
   const firstName = form.get('firstName');
   const lastName = form.get('lastName');
-  console.log('first', firstName?.value, '\nlast', lastName?.value);
 
   return firstName && lastName && firstName?.value === lastName?.value
     ? { duplicate: true }

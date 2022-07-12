@@ -1,0 +1,126 @@
+<form [formGroup]="postForm" (ngSubmit)="onSubmit()">
+  <h3>{{ this.postId ? "Update Post" : "Add Post" }}</h3>
+
+  <!-- owner -->
+  <div class="mb-3">
+    <label for="owner">Owner</label>
+    <input
+      type="text"
+      class="form-control"
+      id="owner"
+      name="owner"
+      formControlName="owner"
+    />
+  </div>
+
+  <!-- text -->
+  <div class="mb-3">
+    <label for="text">Text</label>
+    <input
+      type="text"
+      class="form-control"
+      id="text"
+      name="text"
+      formControlName="text"
+    />
+    <div *ngIf="!text?.valid && text?.touched" class="alert alert-danger">
+      <h6 *ngIf="text?.errors?.['required']">this field is required</h6>
+      <h6 *ngIf="text?.errors?.['minlength']">
+        the name must be more than 6 characters
+      </h6>
+    </div>
+  </div>
+
+  <!-- image -->
+  <div class="mb-3">
+    <label for="image">Image</label>
+    <input
+      type="text"
+      class="form-control"
+      id="image"
+      name="image"
+      formControlName="image"
+    />
+    <div *ngIf="!image?.valid && image?.touched" class="alert alert-danger">
+      <h6 *ngIf="image?.errors?.['required']">this field is required</h6>
+    </div>
+  </div>
+
+  <!-- likes -->
+  <div class="mb-3 w-25">
+    <label for="likes">likes</label>
+    <input
+      type="number"
+      class="form-control text-center"
+      id="likes"
+      name="likes"
+      formControlName="likes"
+    />
+    <div *ngIf="!likes?.valid && likes?.touched" class="alert alert-danger">
+      <h6 *ngIf="likes?.errors?.['required']">this field is required</h6>
+      <h6 *ngIf="likes?.errors?.['min']">likes number must be positive</h6>
+    </div>
+  </div>
+  <!-- tags -->
+  <div formArrayName="tags" class="mb-3 form-control">
+    <label for="tag" class="col-form-label">Tags</label>
+    <div class="row">
+      <div class="col-4">
+        <input
+          type="text"
+          id="tag"
+          #tag
+          class="form-control w-50"
+          (input)="tagValue = tag.value"
+        />
+      </div>
+
+      <button
+        class="btn btn-info col-1"
+        (click)="addTag(tag)"
+        [disabled]="!tagValue.length"
+        type="button"
+      >
+        Add Tag
+      </button>
+    </div>
+    <div *ngFor="let t of getTags().controls; index as i">
+      <div class="row g-3 align-items-center m-2">
+        <label for="{{ t }}" class="col-auto">Tag{{ i }}</label>
+
+        <div class="col-auto">
+          <input
+            type="text"
+            name="{{ t }}"
+            id="{{ t }}"
+            [formControlName]="i"
+            [value]="t.value"
+            class="form-control"
+            readonly
+          />
+        </div>
+        <button class="btn btn-danger col-auto" (click)="deleteTag(i)">
+          Del
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- submit -->
+
+  <div class="w-25 mx-auto row">
+    <button class="btn btn-warning col m-4" type="submit">
+      <h5 class="pt-2">Submit</h5>
+    </button>
+
+    <a
+      class="btn btn-danger col m-4"
+      routerLink="/user-details/{{ userId }}/posts/{{ userId }}"
+    >
+      <h5 class="pt-2">Cancel</h5>
+    </a>
+  </div>
+  <div *ngIf="errors" class="alert alert-danger my-2">
+    <h6>{{ errors }}</h6>
+  </div>
+</form>

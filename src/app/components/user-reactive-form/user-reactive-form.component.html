@@ -17,7 +17,7 @@
     >
       <h6 *ngIf="firstName.errors?.['required']">this field is required</h6>
       <h6 *ngIf="firstName.errors?.['minlength']">
-        the name must be mor than 2 characters 
+        the name must be mor than 2 characters
       </h6>
     </div>
   </div>
@@ -53,7 +53,7 @@
 
     <div *ngIf="!email.valid && email.touched" class="alert alert-danger">
       <h6 *ngIf="email.errors?.['required']">this field is required</h6>
-      <h6 *ngIf="email.errors?.['pattern']">email is not valid</h6>
+      <h6 *ngIf="email.errors?.['email']">email is not valid</h6>
     </div>
   </div>
 
