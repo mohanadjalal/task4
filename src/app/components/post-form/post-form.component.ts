@@ -27,6 +27,7 @@ export class PostFormComponent implements OnInit {
   user: any;
   tagValue: string = '';
   errors = '';
+  success = '';
 
   postForm = this.fb.group({
     text: [
@@ -51,41 +52,48 @@ export class PostFormComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private router: Router,
     private fb: FormBuilder
-  ) {
+  ) {}
+
+  ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe((params) => {
       this.postId = params.get('pId');
+      if (this.postId)
+        this.postService.getPost(this.postId).subscribe((res) => {
+          const { text, image, likes, owner, tags } = res;
+          for (const tag of tags) {
+            this.tags.push(new FormControl(tag));
+          }
+          this.postForm.patchValue({
+            text,
+            image,
+            likes: likes.toString(),
+            owner: owner.firstName,
+          });
+        });
+
       this.userId = params.get('uId');
       this.userService.getUserById(this.userId).subscribe((res) => {
         this.user = res;
         this.owner?.setValue(res.firstName);
       });
     });
-  }
-
-  ngOnInit(): void {
     this.owner?.disable();
-
-    if (this.postId)
-      this.postService.getPost(this.postId).subscribe((res) => {
-        const { text, image, likes, owner, tags } = res;
-        for (const tag of tags) {
-          this.tags.push(new FormControl(tag));
-        }
-        this.postForm.patchValue({
-          text,
-          image,
-          likes: likes.toString(),
-          owner: owner.firstName,
-        });
-      });
   }
   ngOnChanges(): void {}
   onSubmit(): void {
+    this.errors = '';
+    this.success = '';
+    this.postForm.markAllAsTouched();
     if (this.postForm.valid) {
       if (this.postId) {
         this.postService
           .updatePost(this.postId, this.postForm.value)
-          .subscribe((res) => console.log(res));
+          .subscribe((res) => {
+            this.success = 'the post updated successfully';
+            setTimeout(() => {
+              this.backToPosts();
+            }, 2000);
+          });
       } else {
         const body: CreatePost = {
           text: this.text?.value,
@@ -94,20 +102,27 @@ export class PostFormComponent implements OnInit {
           owner: this.userId,
           likes: this.likes?.value,
         };
-        this.postService.createPost(body).subscribe((res) => console.log(res));
+        this.postService.createPost(body).subscribe((res) => {
+          this.success = 'the post created successfully';
+          setTimeout(() => {
+            this.backToPosts();
+          }, 2000);
+        });
       }
     } else this.errors = 'Invalid Information! \nCheck the form inputs';
   }
 
-  addTag(tag: any) {
-    this.getTags().push(new FormControl(tag.value));
-    tag.value = '';
-    this.tagValue = '';
+  addTag() {
+    this.getTags().push(new FormControl(''));
   }
   deleteTag(index: any) {
     this.getTags().removeAt(index);
   }
   getTags() {
     return this.postForm.get('tags') as FormArray;
+  }
+
+  backToPosts() {
+    this.router.navigate([`/user-details/${this.userId}/posts/${this.userId}`]);
   }
 }

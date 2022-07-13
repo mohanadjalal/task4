@@ -64,23 +64,8 @@
   <!-- tags -->
   <div formArrayName="tags" class="mb-3 form-control">
     <label for="tag" class="col-form-label">Tags</label>
-    <div class="row">
-      <div class="col-4">
-        <input
-          type="text"
-          id="tag"
-          #tag
-          class="form-control w-50"
-          (input)="tagValue = tag.value"
-        />
-      </div>
-
-      <button
-        class="btn btn-info col-1"
-        (click)="addTag(tag)"
-        [disabled]="!tagValue.length"
-        type="button"
-      >
+    <div class="col">
+      <button class="btn btn-info" (click)="addTag()" type="button">
         Add Tag
       </button>
     </div>
@@ -96,7 +81,6 @@
             [formControlName]="i"
             [value]="t.value"
             class="form-control"
-            readonly
           />
         </div>
         <button class="btn btn-danger col-auto" (click)="deleteTag(i)">
@@ -123,4 +107,11 @@
   <div *ngIf="errors" class="alert alert-danger my-2">
     <h6>{{ errors }}</h6>
   </div>
+  <div *ngIf="success" class="alert alert-success my-2">
+    <h6>{{ success }}</h6>
+  </div>
+  <div>{{ postForm.value | json }}</div>
+  <br />
+  <br />
+  <br />
 </form>

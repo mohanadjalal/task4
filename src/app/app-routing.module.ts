@@ -14,7 +14,7 @@ import { UserReactiveFormComponent } from './components/user-reactive-form/user-
 const routes: Routes = [
   { path: 'home', component: HomePageComponent },
   { path: 'about', component: AboutComponent },
-  { path: 'user-form/:id ', component: UserReactiveFormComponent },
+  { path: 'user-form/:id', component: UserReactiveFormComponent },
   { path: 'user-form', component: UserReactiveFormComponent },
   { path: 'post-form/:uId/:pId', component: PostFormComponent },
   { path: 'post-form/:uId', component: PostFormComponent },

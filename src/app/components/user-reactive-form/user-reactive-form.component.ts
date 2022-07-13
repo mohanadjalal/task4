@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, ParamMap } from '@angular/router';
 import { UserFormModel } from 'src/app/models/user.model';
 import { UserService } from 'src/app/services/user.service';
 import { duplicateNameValidator } from 'src/app/shared/duplicateNameValidator';
@@ -43,29 +43,28 @@ export class UserReactiveFormComponent implements OnInit {
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private userSer: UserService
-  ) {
-    this.activatedRoute.paramMap.subscribe(
-      (params) => (this.id = params.get('id'))
-    );
-  }
+  ) {}
 
   ngOnInit(): void {
     this.firstName = this.userForm.get('firstName');
     this.lastName = this.userForm.get('lastName');
     this.email = this.userForm.get('email');
-
-    if (this.id)
-      this.user = this.userSer.getUserById(this.id).subscribe((res) => {
-        this.userForm.patchValue({
-          firstName: res.firstName,
-          lastName: res.lastName,
-          email: res.email,
-          title: res.title,
-          gender: res.gender,
-          picture: res.picture,
+    this.activatedRoute.paramMap.subscribe((params) => {
+      this.id = params.get('id');
+      if (this.id) {
+        this.user = this.userSer.getUserById(this.id).subscribe((res) => {
+          this.userForm.patchValue({
+            firstName: res.firstName,
+            lastName: res.lastName,
+            email: res.email,
+            title: res.title,
+            gender: res.gender,
+            picture: res.picture,
+          });
+          this.userForm.get('email')?.disable();
         });
-        this.userForm.get('email')?.disable();
-      });
+      }
+    });
   }
 
   onSubmit() {
