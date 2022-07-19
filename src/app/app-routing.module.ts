@@ -12,14 +12,30 @@ import { UserListComponent } from './components/user-list/user-list.component';
 import { UserReactiveFormComponent } from './components/user-reactive-form/user-reactive-form.component';
 
 const routes: Routes = [
-  { path: 'home', component: HomePageComponent },
-  { path: 'about', component: AboutComponent },
-  { path: 'user-form/:id', component: UserReactiveFormComponent },
-  { path: 'user-form', component: UserReactiveFormComponent },
-  { path: 'post-form/:uId/:pId', component: PostFormComponent },
-  { path: 'post-form/:uId', component: PostFormComponent },
+  { path: 'home', component: HomePageComponent, title: 'Home' },
+  { path: 'about', component: AboutComponent, title: 'about' },
+  {
+    path: 'user-form/:id',
+    component: UserReactiveFormComponent,
+    title: 'Update User',
+  },
+  {
+    path: 'user-form',
+    component: UserReactiveFormComponent,
+    title: 'Create User',
+  },
+  {
+    path: 'post-form/:uId/:pId',
+    component: PostFormComponent,
+    title: 'Update Post',
+  },
+  {
+    path: 'post-form/:uId',
+    component: PostFormComponent,
+    title: 'Create Post',
+  },
 
-  { path: 'users', component: UserListComponent },
+  { path: 'users', component: UserListComponent, title: 'User List' },
   {
     path: 'user-details/:id',
 
@@ -34,13 +50,14 @@ const routes: Routes = [
         component: DetailsComponent,
       },
     ],
+    title: 'Details',
   },
 
   { path: '', redirectTo: 'home', pathMatch: 'full' },
 
-  { path: '**', component: NotFoundComponent },
+  { path: '**', component: NotFoundComponent, title: '404' },
 ];
-
+//shared
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],

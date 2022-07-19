@@ -15,6 +15,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserFormComponent } from './components/user-form/user-form.component';
 import { UserReactiveFormComponent } from './components/user-reactive-form/user-reactive-form.component';
 import { PostFormComponent } from './components/post-form/post-form.component';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -30,13 +31,7 @@ import { PostFormComponent } from './components/post-form/post-form.component';
     UserReactiveFormComponent,
     PostFormComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    FormsModule,
-    ReactiveFormsModule,
-  ],
+  imports: [SharedModule],
   providers: [],
   bootstrap: [AppComponent],
 })
