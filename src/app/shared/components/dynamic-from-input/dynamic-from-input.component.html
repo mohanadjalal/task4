@@ -1,29 +1,15 @@
-<form [formGroup]="form" class="form-group mb-3">
-  <label [attr.for]="input.key">{{ input.label }}</label>
-
+<form class="form-group mb-3">
   <div [ngSwitch]="input.controlType">
-    <input
+    <app-input-text
+      [input]="input"
+      [form]="form"
       *ngSwitchCase="'text'"
-      [formControlName]="input.key"
-      [id]="input.key"
-      [type]="input.type"
-      [required]="input.required"
-      class="form-control"
-    />
+    ></app-input-text>
 
-    <select
-      [id]="input.key"
+    <app-input-select
+      [input]="input"
+      [form]="form"
       *ngSwitchCase="'select'"
-      [formControlName]="input.key"
-      class="form-control"
-    >
-      <option *ngFor="let opt of input.options" [value]="opt.key">
-        {{ opt.value }}
-      </option>
-    </select>
-  </div>
-
-  <div class="alert alert-danger" *ngIf="inValid">
-    {{ input.label }} is required
+    ></app-input-select>
   </div>
 </form>

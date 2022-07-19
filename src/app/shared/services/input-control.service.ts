@@ -8,10 +8,10 @@ import { BaseControl } from '../baseControl';
 export class InputControlService {
   constructor() {}
 
-  toFormGroup(questions: BaseControl<string>[]) {
+  toFormGroup(inputs: BaseControl<string>[]) {
     const group: any = {};
 
-    questions.forEach((question) => {
+    inputs.forEach((question) => {
       group[question.key] = question.required
         ? new FormControl(question.value || '', Validators.required)
         : new FormControl(question.value || '');

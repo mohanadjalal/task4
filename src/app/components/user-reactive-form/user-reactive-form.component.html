@@ -1,7 +1,7 @@
-<form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+<!-- <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
   <h3>{{ id ? "Update User" : "Create User" }}  </h3>
 
-  <!-- first name -->
+  
   <div class="mb-3">
     <label for="name">First Name</label>
     <input
@@ -22,7 +22,7 @@
     </div>
   </div>
 
-  <!-- last name -->
+ 
   <div class="mb-3">
     <label for="lname">Last Name</label>
     <input
@@ -40,7 +40,7 @@
     </div>
   </div>
 
-  <!-- email -->
+ 
   <div class="mb-3">
     <label for="email">E-Mail</label>
     <input
@@ -56,10 +56,9 @@
       <h6 *ngIf="email.errors?.['email']">email is not valid</h6>
     </div>
   </div>
-
-  <!-- update inputs -->
+ 
   <div *ngIf="id">
-    <!-- title -->
+    
     <div class="mb-3">
       <label for="title">Title</label>
       <select
@@ -72,7 +71,7 @@
       </select>
     </div>
 
-    <!-- gender -->
+  
     <div class="mb-3">
       <label for="gender">Gender</label>
       <select
@@ -84,8 +83,7 @@
         <option *ngFor="let g of genders" [value]="g">{{ g }}</option>
       </select>
     </div>
-
-    <!-- pic -->
+ 
     <div class="mb-3">
       <label for="pic">Picture</label>
       <input
@@ -97,9 +95,7 @@
       />
     </div>
   </div>
-  <!-- end update inputs -->
-
-  <!-- submit button -->
+ 
   <button
     class="btn btn-primary me-3 p-2"
     type="submit"
@@ -108,7 +104,7 @@
     Submit
   </button>
 
-  <!-- back button -->
+   
   <button
     class="btn btn-warning m-2 p-2"
     type="reset"
@@ -130,4 +126,4 @@
   <div *ngIf="success" class="alert alert-success">{{ success }}</div>
 
   <div>{{ userForm.value | json }}</div>
-</form>
+</form> -->

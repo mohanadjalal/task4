@@ -6,9 +6,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DynamicFromInputComponent } from './components/dynamic-from-input/dynamic-from-input.component';
 import { DynamicFormComponent } from './components/dynamic-form/dynamic-form.component';
+import { InputTextComponent } from './components/input-text/input-text.component';
+import { InputSelectComponent } from './components/input-select/input-select.component';
 
 @NgModule({
-  declarations: [DynamicFromInputComponent, DynamicFormComponent],
+  declarations: [DynamicFromInputComponent, DynamicFormComponent, InputTextComponent, InputSelectComponent],
   imports: [
     CommonModule,
     BrowserModule,
