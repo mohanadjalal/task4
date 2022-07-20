@@ -6,6 +6,7 @@ import { HomePageComponent } from './components/home-page/home-page.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { PostFormComponent } from './components/post-form/post-form.component';
 import { PostsComponent } from './components/posts/posts.component';
+import { UserDyFormComponent } from './components/task7/user-dy-form/user-dy-form.component';
 import { UserDetailesComponent } from './components/user-detailes/user-detailes.component';
 import { UserFormComponent } from './components/user-form/user-form.component';
 import { UserListComponent } from './components/user-list/user-list.component';
@@ -16,12 +17,12 @@ const routes: Routes = [
   { path: 'about', component: AboutComponent, title: 'about' },
   {
     path: 'user-form/:id',
-    component: UserReactiveFormComponent,
+    component: UserDyFormComponent,
     title: 'Update User',
   },
   {
     path: 'user-form',
-    component: UserReactiveFormComponent,
+    component: UserDyFormComponent,
     title: 'Create User',
   },
   {

@@ -11,10 +11,16 @@ import { TextInput } from '../../textInput';
 export class InputTextComponent implements OnInit {
   @Input() input!: BaseControl<string>;
   @Input() form!: FormGroup;
+  errors: any;
 
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    
+  }
+  getErrors() {
+    this.errors = this.form.controls[this.input.key].errors;
+  }
   get inValid() {
     return (
       this.form.controls[this.input.key].invalid &&

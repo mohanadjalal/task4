@@ -16,6 +16,8 @@ import { UserFormComponent } from './components/user-form/user-form.component';
 import { UserReactiveFormComponent } from './components/user-reactive-form/user-reactive-form.component';
 import { PostFormComponent } from './components/post-form/post-form.component';
 import { SharedModule } from './shared/shared.module';
+import { UserDyFormComponent } from './components/task7/user-dy-form/user-dy-form.component';
+import { PostDyFormComponent } from './components/task7/post-dy-form/post-dy-form.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +32,8 @@ import { SharedModule } from './shared/shared.module';
     UserFormComponent,
     UserReactiveFormComponent,
     PostFormComponent,
+    UserDyFormComponent,
+    PostDyFormComponent,
   ],
   imports: [SharedModule],
   providers: [],
