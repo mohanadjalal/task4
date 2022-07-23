@@ -1,4 +1,10 @@
-import { Component, Input, OnInit } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnChanges,
+  OnInit,
+  SimpleChanges,
+} from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { BaseControl } from '../../baseControl';
 import { TextInput } from '../../textInput';
@@ -8,18 +14,18 @@ import { TextInput } from '../../textInput';
   templateUrl: './input-text.component.html',
   styleUrls: ['./input-text.component.css'],
 })
-export class InputTextComponent implements OnInit {
+export class InputTextComponent implements OnChanges {
   @Input() input!: BaseControl<string>;
   @Input() form!: FormGroup;
   errors: any;
 
   constructor() {}
 
-  ngOnInit(): void {
-    
+  ngOnChanges(changes: SimpleChanges): void {
+    this.getErrors();
   }
   getErrors() {
-    this.errors = this.form.controls[this.input.key].errors;
+    this.errors = this.form.controls[this.input.key]?.errors;
   }
   get inValid() {
     return (

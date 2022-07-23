@@ -1,0 +1,30 @@
+<div class="form-control">
+  <button class="btn btn-info" (click)="addInput()" type="button">
+    Add {{ input.label }}
+  </button>
+  <div [formGroup]="form">
+    <div
+      *ngFor="let control of getInputs()?.controls; index as i"
+      [formArrayName]="input.key"
+    >
+      <div class="row g-3 align-items-center m-2">
+        <label for="{{ input.key }}" class="col-1">{{
+          input.label + " " + i
+        }}</label>
+
+        <input
+          type="text"
+          name="{{ input.key }}"
+          id="{{ input.key }}"
+          [formControlName]="i"
+          [value]="control.value"
+          class="form-control w-25"
+        />
+
+        <div class="col-2">
+          <button class="btn btn-danger" (click)="deleteInput(i)">Del</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -6,6 +6,7 @@ import { HomePageComponent } from './components/home-page/home-page.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { PostFormComponent } from './components/post-form/post-form.component';
 import { PostsComponent } from './components/posts/posts.component';
+import { PostDyFormComponent } from './components/task7/post-dy-form/post-dy-form.component';
 import { UserDyFormComponent } from './components/task7/user-dy-form/user-dy-form.component';
 import { UserDetailesComponent } from './components/user-detailes/user-detailes.component';
 import { UserFormComponent } from './components/user-form/user-form.component';
@@ -27,12 +28,12 @@ const routes: Routes = [
   },
   {
     path: 'post-form/:uId/:pId',
-    component: PostFormComponent,
+    component: PostDyFormComponent,
     title: 'Update Post',
   },
   {
     path: 'post-form/:uId',
-    component: PostFormComponent,
+    component: PostDyFormComponent,
     title: 'Create Post',
   },
 

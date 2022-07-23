@@ -1,1 +1,12 @@
-<p>post-dy-form works!</p>
+<button class="btn btn-warning my-2" (click)="backToPosts()">Back</button>
+<form>
+  <app-dynamic-form
+    [inputs]="inputs | async"
+    (formValue)="form = $event"
+    (submit)="onSubmit()"
+  ></app-dynamic-form>
+  <div *ngIf="success" class="alert alert-success my-2">{{ success }}</div>
+  <div *ngIf="errors" class="alert alert-danger my-2">
+    <h6>{{ errors }}</h6>
+  </div>
+</form>

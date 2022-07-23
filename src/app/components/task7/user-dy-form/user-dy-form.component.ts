@@ -25,7 +25,7 @@ export class UserDyFormComponent implements OnInit {
       type: 'text',
       required: true,
       order: 1,
-      validators: { minLength: 4, maxLength: 10 },
+      validators: { minLength: 2 },
     }),
 
     new TextInput({
@@ -34,6 +34,7 @@ export class UserDyFormComponent implements OnInit {
       label: 'Last Name',
       type: 'text',
       required: true,
+      validators: { minLength: 2 },
       order: 2,
     }),
     new TextInput({

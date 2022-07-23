@@ -21,4 +21,8 @@
     {{ input.label }} must be more than
     {{ errors?.minlength.requiredLength }} characters
   </div>
+
+  <div class="alert alert-danger" *ngIf="errors?.min">
+    {{ input.label }} must be positive number
+  </div>
 </div>

@@ -1,12 +1,17 @@
 import { Injectable, Input } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { BaseControl } from '../baseControl';
 
 @Injectable({
   providedIn: 'root',
 })
 export class InputControlService {
-  constructor() {}
+  constructor(private fb: FormBuilder) {}
 
   toFormGroup(inputs: BaseControl<string>[]) {
     const group: any = {};
@@ -22,17 +27,27 @@ export class InputControlService {
                 input.validators[key as keyof typeof input.validators]
               )
             );
+            if (key === 'min')
+            valds.push(
+              Validators.min(
+                input.validators[key as keyof typeof input.validators]
+              )
+            );
         }
       }
-      group[input.key] = input.required
-        ? new FormControl(
-            { value: input.value || '', disabled: input.disable },
-            [Validators.required, ...valds]
-          )
-        : new FormControl(
-            { value: input.value || '', disabled: input.disable },
-            valds
-          );
+      if (input.type === 'array') {
+        group[input.key] = this.fb.array([]);
+      } else {
+        group[input.key] = input.required
+          ? new FormControl(
+              { value: input.value || '', disabled: input.disable },
+              [Validators.required, ...valds]
+            )
+          : new FormControl(
+              { value: input.value || '', disabled: input.disable },
+              valds
+            );
+      }
     });
     return new FormGroup(group);
   }

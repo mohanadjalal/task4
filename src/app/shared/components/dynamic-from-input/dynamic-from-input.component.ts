@@ -10,6 +10,7 @@ import { BaseControl } from '../../baseControl';
 export class DynamicFromInputComponent implements OnInit {
   @Input() input!: BaseControl<string>;
   @Input() form!: FormGroup;
+
   constructor() {}
 
   ngOnInit(): void {}

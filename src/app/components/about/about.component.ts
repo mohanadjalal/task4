@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Validators } from '@angular/forms';
+import { FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
+import { ArrayInput } from 'src/app/shared/arrayInput';
 import { BaseControl } from 'src/app/shared/baseControl';
 import { SelectInput } from 'src/app/shared/selectInput';
 import { InputService } from 'src/app/shared/services/input.service';
@@ -60,17 +61,15 @@ export class AboutComponent implements OnInit {
         { key: 'dr', value: 'dr' },
       ],
     }),
-    new TextInput({
-      key: 'picture',
-      value: '',
-      label: 'Picture',
-      type: 'text',
-      order: 6,
-    }),
+    new ArrayInput(),
   ];
+  form!: FormGroup;
   constructor(private inputService: InputService) {
     this.inputService.setInputs(this.inputAr);
     this.inputs = inputService.getInputs();
+  }
+  onSubmit() {
+    console.log(this.form.getRawValue());
   }
 
   ngOnInit(): void {}

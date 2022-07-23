@@ -8,9 +8,16 @@ import { DynamicFromInputComponent } from './components/dynamic-from-input/dynam
 import { DynamicFormComponent } from './components/dynamic-form/dynamic-form.component';
 import { InputTextComponent } from './components/input-text/input-text.component';
 import { InputSelectComponent } from './components/input-select/input-select.component';
+import { ArrayFromComponent } from './components/array-from/array-from.component';
 
 @NgModule({
-  declarations: [DynamicFromInputComponent, DynamicFormComponent, InputTextComponent, InputSelectComponent],
+  declarations: [
+    DynamicFromInputComponent,
+    DynamicFormComponent,
+    InputTextComponent,
+    InputSelectComponent,
+    ArrayFromComponent,
+  ],
   imports: [
     CommonModule,
     BrowserModule,
