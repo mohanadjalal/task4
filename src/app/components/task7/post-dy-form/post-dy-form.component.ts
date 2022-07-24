@@ -105,7 +105,6 @@ export class PostDyFormComponent implements OnInit {
   onSubmit() {
     this.errors = '';
     this.success = '';
-    this.form.markAllAsTouched();
 
     if (this.form.valid) {
       if (this.postId) {
@@ -128,7 +127,10 @@ export class PostDyFormComponent implements OnInit {
           }, 2000);
         });
       }
-    } else this.errors = 'Invalid Information!  Check the form inputs';
+    } else {
+      this.form.markAllAsTouched();
+      this.errors = 'Invalid Information!  Check the form inputs';
+    }
   }
 
   backToPosts() {

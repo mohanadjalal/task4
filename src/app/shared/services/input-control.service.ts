@@ -17,24 +17,8 @@ export class InputControlService {
     const group: any = {};
 
     inputs.forEach((input) => {
-      const valds = [];
-      if (input.type === 'email') valds.push(Validators.email);
-      if (Object.keys(input.validators).length !== 0) {
-        for (const key in input.validators) {
-          if (key === 'minLength')
-            valds.push(
-              Validators.minLength(
-                input.validators[key as keyof typeof input.validators]
-              )
-            );
-            if (key === 'min')
-            valds.push(
-              Validators.min(
-                input.validators[key as keyof typeof input.validators]
-              )
-            );
-        }
-      }
+      const valds = this.getValidators(input);
+
       if (input.type === 'array') {
         group[input.key] = this.fb.array([]);
       } else {
@@ -50,5 +34,27 @@ export class InputControlService {
       }
     });
     return new FormGroup(group);
+  }
+
+  getValidators(input: BaseControl<string>) {
+    const validators = [];
+    if (input.type === 'email') validators.push(Validators.email);
+    if (Object.keys(input.validators).length !== 0) {
+      for (const key in input.validators) {
+        if (key === 'minLength')
+          validators.push(
+            Validators.minLength(
+              input.validators[key as keyof typeof input.validators]
+            )
+          );
+        if (key === 'min')
+          validators.push(
+            Validators.min(
+              input.validators[key as keyof typeof input.validators]
+            )
+          );
+      }
+    }
+    return validators;
   }
 }

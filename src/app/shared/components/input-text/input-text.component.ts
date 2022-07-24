@@ -14,19 +14,14 @@ import { TextInput } from '../../textInput';
   templateUrl: './input-text.component.html',
   styleUrls: ['./input-text.component.css'],
 })
-export class InputTextComponent implements OnChanges {
+export class InputTextComponent implements OnInit {
   @Input() input!: BaseControl<string>;
   @Input() form!: FormGroup;
-  errors: any;
 
   constructor() {}
 
-  ngOnChanges(changes: SimpleChanges): void {
-    this.getErrors();
-  }
-  getErrors() {
-    this.errors = this.form.controls[this.input.key]?.errors;
-  }
+  ngOnInit(): void {}
+
   get inValid() {
     return (
       this.form.controls[this.input.key].invalid &&

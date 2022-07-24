@@ -6,23 +6,9 @@
     [type]="input.type"
     [required]="input.required"
     class="form-control"
-    (focus)="getErrors()"
-    (input)="getErrors()"
   />
-  <div
-    class="alert alert-danger"
-    *ngIf="errors?.required && form.controls[this.input.key].touched"
-  >
-    {{ input.label }} is required
-  </div>
-  <div class="alert alert-danger" *ngIf="errors?.email">Email not valid</div>
-
-  <div class="alert alert-danger" *ngIf="errors?.minlength">
-    {{ input.label }} must be more than
-    {{ errors?.minlength.requiredLength }} characters
-  </div>
-
-  <div class="alert alert-danger" *ngIf="errors?.min">
-    {{ input.label }} must be positive number
-  </div>
 </div>
+<!-- 
+   (focus)="getErrors()"
+    (input)="getErrors()"
+ -->

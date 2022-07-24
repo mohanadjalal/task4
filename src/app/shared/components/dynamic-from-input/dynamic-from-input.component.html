@@ -15,4 +15,26 @@
     <app-array-from [input]="input" [form]="form" *ngSwitchCase="'array'">
     </app-array-from>
   </div>
+
+  <div
+    class="alert alert-danger"
+    *ngIf="errors?.['required'] && control.touched"
+  >
+    {{ input.label }} is required
+  </div>
+  <div class="alert alert-danger" *ngIf="errors?.['email'] && control.touched">
+    Email not valid
+  </div>
+
+  <div
+    class="alert alert-danger"
+    *ngIf="errors?.['minlength']&& control.touched"
+  >
+    {{ input.label }} must be more than
+    {{ errors?.['minlength'].requiredLength }} characters
+  </div>
+
+  <div class="alert alert-danger" *ngIf="errors?.['min']&& control.touched">
+    {{ input.label }} must be more than {{ errors?.['min'].min }}
+  </div>
 </form>

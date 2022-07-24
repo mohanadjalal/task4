@@ -10,8 +10,6 @@
   ></app-dynamic-form>
   <div *ngIf="success" class="alert alert-success my-2">{{ success }}</div>
   <div *ngIf="errors.length" class="alert alert-danger my-2">
-    <h5 *ngFor="let err of errors" class="m-2">{{ err }}</h5>
+    <h5 class="m-2">{{ errors }}</h5>
   </div>
 </form>
-
- 
